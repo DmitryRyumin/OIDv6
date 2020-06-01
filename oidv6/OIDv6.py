@@ -14,7 +14,6 @@ import numpy as np  # Научные вычисления
 import pandas as pd  # Обработка и анализ данных
 import progressbar
 import cv2  # Алгоритмы компьютерного зрения
-import awscli
 
 from multiprocessing.dummy import Pool as ThreadPool  # Распараллелирование
 from datetime import datetime  # Взаимодействие со временем

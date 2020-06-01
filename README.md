@@ -22,13 +22,6 @@ pip install --upgrade oidv6-rc0
 
 ## Зависимости
 
-'requests >= 2.23.0',
-    'numpy >= 1.18.4',
-    'pandas >= 1.0.4',
-    'progressbar2 >= 3.51.3',
-    'opencv-contrib-python >= 4.2.0.34',
-    'awscli >= 1.18.69'
-
 | Пакеты | Минимальная версия | Текущая версия |
 | ------ | ------------------ | -------------- |
 `requests` | `2.23.0` | ![PyPI](https://img.shields.io/pypi/v/requests) |
@@ -38,4 +31,4 @@ pip install --upgrade oidv6-rc0
 `opencv-contrib-python` | `4.2.0.34` | ![PyPI](https://img.shields.io/pypi/v/opencv-contrib-python) |
 `awscli` | `1.18.69` | ![PyPI](https://img.shields.io/pypi/v/awscli) |
 
-## Класс для массовой загрузки набора данных Open Images Dataset V6 - [смотреть](https://github.com/DmitryRyumin/pkgs/blob/master/oidv6/oidv6/OIDv6.py)
+## Класс для массовой загрузки набора данных Open Images Dataset V6 - [смотреть](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
