@@ -32,3 +32,9 @@ pip install --upgrade oidv6-rc0
 `awscli` | `1.18.69` | ![PyPI](https://img.shields.io/pypi/v/awscli) |
 
 ## Класс для массовой загрузки набора данных Open Images Dataset V6 - [смотреть](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+
+<h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
+
+| Файлы/скрипты | Аргументы командной строки | Описания |
+| ------------- | -------------------------- | -------- |
+| [run.py](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/samples/run.py)<br>`oidv6` | `<command>` - `downloader`<br>`--dataset` - Корневая директория для сохранения Open Images Dataset V6<br>`--type_data` - `train`, `validation`, `test` или `all`<br>`--classes` - Последовательность названий классов или текстовый файл<br>`--multi_classes` - Загрузка классов в одну директорию<br>`--limit` - Лимит загрузки изображений<br>`--yes` - Загрузка служебных файлов в ручном режиме<br>`--no_labels` - Не формировать метки<br>`--hide_metadata` - Вывод метаданных<br>`--no_clear_shell` - Не очищать консоль перед выполнением | Массовая загрузка набора данных Open Images Dataset V6 |

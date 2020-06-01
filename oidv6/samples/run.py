@@ -85,7 +85,7 @@ class Run(Messages):
         self._ap.add_argument('--classes', required = False, nargs = '+', metavar = 'Список классов или текстовый файл',
                               help = 'Последовательность названий классов или текстовый файл')
         self._ap.add_argument('--multi_classes', required = False, action = 'store_true',
-                              help = 'Скачать отдельные классы вместе')
+                              help = 'Загрузка классов в одну директорию')
         self._ap.add_argument('--limit', required = False, default = 0, type = int, metavar = 'целое число',
                               help = 'Лимит загрузки изображений, значение по умолчанию: %(default)s)')
 
