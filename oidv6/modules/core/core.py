@@ -50,7 +50,9 @@ class Core(cfg.Messages):
         """
 
         # Парсер для параметров командной строки
-        self._ap = argparse.ArgumentParser(description = 'Массовая загрузка набора данных Open Images Dataset V6')
+        self._ap = argparse.ArgumentParser(
+            description = 'Массовая загрузка набора данных Open Images Dataset V6 (OIDv6)'
+        )
 
         if conv_to_dict is True:
             return vars(self._ap.parse_args())  # Преобразование списка аргументов командной строки в словарь

@@ -76,20 +76,20 @@ class Run(Messages):
 
         # Добавление аргументов в парсер командной строки
         self._ap.add_argument('command', metavar = '<command> "downloader"',
-                              choices = self._oid.commands, help = '"downloader"')
+                              choices = self._oid.commands, help = 'Команда загрузки')
 
-        self._ap.add_argument('--dataset', required = False, metavar = 'Путь к директории',
+        self._ap.add_argument('--dataset', required = False, metavar = 'путь_к_директории',
                               default = self._oid.dir,
-                              help = 'Корневая директория для сохранения Open Images Dataset V6')
+                              help = 'Корневая директория для сохранения OIDv6, значение по умолчанию: %(default)s')
         self._ap.add_argument('--type_data', required = False, choices = list(self._oid.type_data.keys()) + ['all'],
                               default = 'train', metavar = '"train", "validation", "test" или "all"',
-                              help = 'Набор данных, значение по умолчанию: %(default)s)')
-        self._ap.add_argument('--classes', required = False, nargs = '+', metavar = 'Список классов или текстовый файл',
+                              help = 'Набор данных, значение по умолчанию: %(default)s')
+        self._ap.add_argument('--classes', required = False, nargs = '+', metavar = 'список_классов_или_текстовый_файл',
                               help = 'Последовательность названий классов или текстовый файл')
         self._ap.add_argument('--multi_classes', required = False, action = 'store_true',
                               help = 'Загрузка классов в одну директорию')
-        self._ap.add_argument('--limit', required = False, default = 0, type = int, metavar = 'целое число',
-                              help = 'Лимит загрузки изображений, значение по умолчанию: %(default)s)')
+        self._ap.add_argument('--limit', required = False, default = 0, type = int, metavar = 'целое_число',
+                              help = 'Лимит загрузки изображений, значение по умолчанию: %(default)s')
 
         self._ap.add_argument('--yes', required = False, action = 'store_true', help = 'Загрузка служебных файлов в '
                                                                                        'ручном режиме')
