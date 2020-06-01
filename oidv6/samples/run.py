@@ -4,7 +4,8 @@
 """
 Массовая загрузка набора данных Open Images Dataset V6
 
-TODO
+python oidv6/samples/run.py <command> --classes названия_классов_или_текстовый_файл
+    [--dataset Dataset --type_data train --limit 0 --multi_classes --yes --no_labels --hide_metadata --no_clear_shell]
 """
 
 # ######################################################################################################################
@@ -78,7 +79,8 @@ class Run(Messages):
                               choices = self._oid.commands, help = '"downloader"')
 
         self._ap.add_argument('--dataset', required = False, metavar = 'Путь к директории',
-                              default = '', help = 'Корневая директория для сохранения Open Images Dataset V6')
+                              default = self._oid.dir,
+                              help = 'Корневая директория для сохранения Open Images Dataset V6')
         self._ap.add_argument('--type_data', required = False, choices = list(self._oid.type_data.keys()) + ['all'],
                               default = 'train', metavar = '"train", "validation", "test" или "all"',
                               help = 'Набор данных, значение по умолчанию: %(default)s)')

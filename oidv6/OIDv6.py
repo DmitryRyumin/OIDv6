@@ -80,7 +80,7 @@ class OIDv6(Messages):
             'v6': 'https://storage.googleapis.com/openimages/v6/'
         }
 
-        self._dir = 'OIDv6'  # Корневая директория
+        self._dir = 'OIDv6'  # Корневая директория по умолчанию
         self._commands = ['downloader']  # Команды
         # Подвыборка набора данных
         self._type_data = {
@@ -123,6 +123,11 @@ class OIDv6(Messages):
     @property
     def type_data(self):
         return self._type_data
+
+    # Получение корневой директория по умолчанию
+    @property
+    def dir(self):
+        return self._dir
 
     # ------------------------------------------------------------------------------------------------------------------
     # Внутренние методы
