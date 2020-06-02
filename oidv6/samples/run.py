@@ -75,24 +75,24 @@ class Run(Messages):
         super().build_args(False)  # Выполнение функции из суперкласса
 
         # Добавление аргументов в парсер командной строки
-        self._ap.add_argument('command', metavar = '<command> "downloader"',
+        self._ap.add_argument('command', metavar = '<command> downloader',
                               choices = self._oid.commands, help = 'Команда загрузки')
 
         self._ap.add_argument('--dataset', required = False, metavar = 'путь_к_директории',
                               default = self._oid.dir,
                               help = 'Корневая директория для сохранения OIDv6, значение по умолчанию: %(default)s')
         self._ap.add_argument('--type_data', required = False, choices = list(self._oid.type_data.keys()) + ['all'],
-                              default = 'train', metavar = '"train", "validation", "test" или "all"',
+                              default = 'train', metavar = 'train, validation, test или all',
                               help = 'Набор данных, значение по умолчанию: %(default)s')
-        self._ap.add_argument('--classes', required = False, nargs = '+', metavar = 'список_классов_или_текстовый_файл',
+        self._ap.add_argument('--classes', required = False, nargs = '+', metavar = 'название_класса',
                               help = 'Последовательность названий классов или текстовый файл')
         self._ap.add_argument('--multi_classes', required = False, action = 'store_true',
                               help = 'Загрузка классов в одну директорию')
         self._ap.add_argument('--limit', required = False, default = 0, type = int, metavar = 'целое_число',
-                              help = 'Лимит загрузки изображений, значение по умолчанию: %(default)s')
+                              help = 'Лимит загрузки изображений, значение по умолчанию: %(default)s (нет лимита)')
 
-        self._ap.add_argument('--yes', required = False, action = 'store_true', help = 'Загрузка служебных файлов в '
-                                                                                       'ручном режиме')
+        self._ap.add_argument('--yes', required = False, action = 'store_true',
+                              help = 'Автоматическая загрузка служебных файлов')
         self._ap.add_argument('--no_labels', required = False, action = 'store_true', help = 'Не формировать метки')
         self._ap.add_argument('--hide_metadata', required = False, action = 'store_true', help = 'Вывод метаданных')
         self._ap.add_argument('--no_clear_shell', required = False, action = 'store_false',
