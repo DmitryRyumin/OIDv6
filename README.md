@@ -35,7 +35,7 @@ pip install --upgrade oidv6
 
 ### Аргументы командной строки
 
-| Аргумент | Тип | Описание | Допустимые значения |
+| Аргумент&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Тип | Описание | Допустимые значения |
 | -------------------------- | ---  | -------- | ------------------- |
 | command | str | Команда загрузки | `downloader` |
 | --dataset | str | Корневая директория для сохранения OIDv6<br>`Значение по умолчанию: OIDv6` | - |
@@ -77,6 +77,5 @@ pip install --upgrade oidv6
     > CMD
     >
     > ```shell script
-    > oidv6 downloader
-    >     --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
+    > oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
     > ```
