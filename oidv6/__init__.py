@@ -5,9 +5,9 @@ __all__ = (
 
 __title__ = 'OIDv6'
 __summary__ = 'Массовая загрузка набора данных Open Images Dataset V6'
-__uri__ = 'https://github.com/DmitryRyumin/pkgs/tree/master/oidv6'
+__uri__ = 'https://github.com/DmitryRyumin/OIDv6'
 
-__version__ = '1.0.0-rc1'
+__version__ = '1.0.0-rc2'
 
 __author__ = 'Dmitry Ryumin'
 __email__ = 'dl_03.03.1991@mail.ru'

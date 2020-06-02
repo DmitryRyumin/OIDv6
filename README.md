@@ -6,7 +6,7 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/oidv6)
 ![PyPI - License](https://img.shields.io/pypi/l/oidv6)
 
-## [История релизов](https://github.com/DmitryRyumin/pkgs/blob/master/oidv6/NOTES.md)
+## [История релизов](https://github.com/DmitryRyumin/OIDv6/blob/master/NOTES.md)
 
 ## Установка
 
