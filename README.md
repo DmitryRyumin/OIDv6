@@ -45,7 +45,7 @@ pip install --upgrade oidv6
 | --multi_classes | bool | Загрузка классов в одну директорию | Без значений |
 | --yes | bool | Автоматическая загрузка служебных файлов | Без значений |
 | --no_labels | bool | Автоматическая загрузка служебных файлов | Без значений |
-| --hide_metadata | bool | Вывод метаданных | Без значений |
+| --hide_meta | bool | Вывод метаданных | Без значений |
 | --no_clear_shell | bool | Не очищать консоль перед выполнением | Без значений |
 
 <h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
@@ -54,7 +54,7 @@ pip install --upgrade oidv6
 
     > CMD
     >
-    > ```cmd
+    > ```shell script
     > oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
     > ```
 
@@ -62,7 +62,7 @@ pip install --upgrade oidv6
 
     > CMD
     >
-    > ```cmd
+    > ```shell script
     > oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
     > ```
    
@@ -76,8 +76,7 @@ pip install --upgrade oidv6
 
     > CMD
     >
-    > ```cmd
+    > ```shell script
     > oidv6 downloader
-    >     --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу
-    >     --limit 10 --yes
+    >     --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
     > ```
