@@ -50,8 +50,14 @@ pip install --upgrade oidv6
 
 <h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
 
-1. Загрузка классов (`apple`, `banana`) с метками в полуавтоматическом режиме и лимитом изображений = `4`
+1. Загрузка классов (`apple`, `banana`) из наборов `train`, `validation` и `test` с метками в полуавтоматическом режиме и лимитом изображений = `4`
 
     ```cmd
    oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
+   ```
+
+1. Загрузка тренировочных классов (`cat`, `dog`) из набора `train` с метками в автоматическом режиме и лимитом изображений = `10`
+
+    ```cmd
+   oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
    ```
