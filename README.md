@@ -77,5 +77,7 @@ pip install --upgrade oidv6
     > CMD
     >
     > ```cmd
-    > oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
+    > oidv6 downloader
+    >     --dataset путь_к_директории --type_data validation
+    >     --classes путь_к_текстовому_файлу --limit 10 --yes
     > ```
