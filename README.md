@@ -50,4 +50,8 @@ pip install --upgrade oidv6
 
 <h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
 
-##### В разработке ...
+1. Загрузка классов в полуавтоматическом режиме `apple`, `banana` с метками и лимитом изображений = `4`
+
+    ```cmd
+   oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
+   ```

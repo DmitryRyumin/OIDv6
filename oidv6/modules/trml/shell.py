@@ -55,7 +55,6 @@ class Shell:
             commands_shell.append("printf '%*s\n' \"${COLUMNS:-$(tput cols)}\" '' | tr ' ' -")
         # Windows
         elif sys.platform == 'win32':
-            commands_shell.append("echo.")
             commands_shell.append("powershell -NoLogo -NoProfile -Command \"'-' * $Host.UI.RawUI.WindowSize.Width\"")
 
         if len(commands_shell) > 0:
