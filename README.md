@@ -52,15 +52,19 @@ pip install --upgrade oidv6
 
 1. Загрузка классов (`apple`, `banana`) из наборов `train`, `validation` и `test` с метками в полуавтоматическом режиме и лимитом изображений = `4`
 
-    ```cmd
-    oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
-    ```
+    > CMD
+    >
+    > ```cmd
+    > oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
+    > ```
 
 2. Загрузка тренировочных классов (`cat`, `dog`) из набора `train` с метками в автоматическом режиме и лимитом изображений = `10`
 
-    ```cmd
-    oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
-    ```
+    > CMD
+    >
+    > ```cmd
+    > oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
+    > ```
    
 3. Загрузка валидационных классов (`person` - текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
 
@@ -71,7 +75,7 @@ pip install --upgrade oidv6
     > ```
 
     > CMD
-
-        ```cmd
-        oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
-        ```
+    >
+    > ```cmd
+    > oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
+    > ```
