@@ -5,7 +5,7 @@
 Массовая загрузка набора данных Open Images Dataset V6
 
 python oidv6/samples/run.py <command> --classes названия_классов_или_текстовый_файл
-    [--dataset Dataset --type_data train --limit 0 --multi_classes --yes --no_labels --hide_meta --no_clear_shell]
+    [--dataset Dataset --type_data train --limit 0 --multi_classes --yes --no_labels --hide_metadata --no_clear_shell]
 """
 
 # ######################################################################################################################
@@ -94,7 +94,7 @@ class Run(Messages):
         self._ap.add_argument('--yes', required = False, action = 'store_true',
                               help = 'Автоматическая загрузка служебных файлов')
         self._ap.add_argument('--no_labels', required = False, action = 'store_true', help = 'Не формировать метки')
-        self._ap.add_argument('--hide_meta', required = False, action = 'store_true', help = 'Вывод метаданных')
+        self._ap.add_argument('--hide_metadata', required = False, action = 'store_true', help = 'Вывод метаданных')
         self._ap.add_argument('--no_clear_shell', required = False, action = 'store_false',
                               help = 'Не очищать консоль перед выполнением')
 
@@ -138,7 +138,7 @@ class Run(Messages):
         Shell.add_line()  # Добавление линии во весь экран
 
         # Запуск
-        if self._args['hide_meta'] is False:
+        if self._args['hide_metadata'] is False:
             print(self._metadata.format(
                 datetime.now().strftime(self._format_time),
                 metadata.__author__,

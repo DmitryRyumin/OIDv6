@@ -7,7 +7,7 @@ __title__ = 'OIDv6'
 __summary__ = 'Массовая загрузка набора данных Open Images Dataset V6'
 __uri__ = 'https://github.com/DmitryRyumin/OIDv6'
 
-__version__ = '1.0.0-rc5'
+__version__ = '1.0.0-rc6'
 
 __author__ = 'Dmitry Ryumin'
 __email__ = 'dl_03.03.1991@mail.ru'
