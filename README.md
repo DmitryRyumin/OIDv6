@@ -35,7 +35,7 @@ pip install --upgrade oidv6
 
 ### Аргументы командной строки
 
-| Аргумент&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Тип | Описание | Допустимые значения |
+| Аргумент&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Тип | Описание | Допустимые значения |
 | -------------------------- | ---  | -------- | ------------------- |
 | command | str | Команда загрузки | `downloader` |
 | --dataset | str | Корневая директория для сохранения OIDv6<br>`Значение по умолчанию: OIDv6` | - |
