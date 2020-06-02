@@ -64,9 +64,13 @@ pip install --upgrade oidv6
    
 3. Загрузка валидационных классов (`person` - текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
 
+    > Текстовый файл
+
     ```text
    person
     ```
+
+    > CMD
 
     ```cmd
     oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
