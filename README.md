@@ -65,7 +65,7 @@ pip install --upgrade oidv6
     > ```shell script
     > oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
     > ```
-   
+
 3. Загрузка валидационных классов (`person` - текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
 
     > Текстовый файл
@@ -78,4 +78,12 @@ pip install --upgrade oidv6
     >
     > ```shell script
     > oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
+    > ```
+
+4. Мультизагрузка классов (`axe`, `calculator`) из наборов `train`, `validation` и `test` с метками в автоматическом режиме и лимитом изображений = `12`
+
+    > CMD
+    >
+    > ```shell script
+    > oidv6 downloader --dataset путь_к_директории --type_data all --classes axe calculator --limit 12 --multu_classes --yes
     > ```
