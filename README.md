@@ -97,5 +97,5 @@ pip install --upgrade oidv6
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data all --classes axe calculator --limit 12 --multu_classes --yes
+    > oidv6 downloader --dataset путь_к_директории --type_data all --classes axe calculator --limit 12 --multi_classes --yes
     > ```
