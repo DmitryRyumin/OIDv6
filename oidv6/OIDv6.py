@@ -49,9 +49,10 @@ class Messages(cfg.Messages):
         self._input_error = '        {}Скачать отсутствующий файл? [Y/n]{} '
         self._cancel_download = '[{}{}{}] Отмена загрузки ...'
         self._url_error = '        [{}{}{}] Не удалось скачать файл (ошибка {}) ...'
-        self._already_downloaded = '        Все изображений были загружены ранее ...'
+        self._already_downloaded = '        Все изображения были загружены ранее ...'
         self._all_images_in_class = '    Всего "{}" изображений {} ...'
-        self._limit = ' из них будет скачано {} ...'
+        self._images_not_found = '    {}Изображений "{}" не найдено, пропуск ...{}'
+        self._limit = ' из них будет загружено {} ...'
         self._labels = '    Формирование меток ... '
         self._photo_not_read = '        {}Изображение "{}" повреждено ...{}'
         self._headers = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) ' \
@@ -103,12 +104,17 @@ class OIDv6(Messages):
         self._boxes = 'boxes'  # Директория для файлов с информацией
         self._metadata = 'metadata'  # Директория для метаданных
         self._lbls = 'labels'  # Директория для меток
+        self._multi = 'multidata'  # Директория общей загрузки классов
         self._name_file_classes = 'class-descriptions-boxable.csv'  # Файл с названиями классов
         self._chunk_size = 512  # Размер загрузки за 1 шаг
         self._download_file_classes = 'y'  # Загрузка файлов CSV
         self._df_classes = None  # Таблица с названиями классов
 
         self._ext = '.jpg'  # Расширение изображений
+
+        self._curr_class = None  # Текущий класс, который загружается
+
+        self._labels_list = []  # Список изображений, для которых необходимо загрузить метки
 
     # ------------------------------------------------------------------------------------------------------------------
     # Свойства
@@ -138,13 +144,17 @@ class OIDv6(Messages):
         """
         Проверка аргументов командной строки на валидность
 
-        (dict [, bool]) -> bool
+        (dict [, bool]) -> int
 
         Аргументы:
            args - Словарь из аргументов командной строки
            out  - Печатать процесс выполнения
 
-        Возвращает: True если аргументы валидны, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - Аргументы валидны
+            400 - Ошибка при проверке аргументов
+            403 - Неверные типы аргументов
+            404 - Словарь аргументов командной строки пуст
         """
 
         # Проверка аргументов
@@ -156,7 +166,7 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._valid_args.__name__
                 ))
 
-            return False
+            return 400
 
         # Словарь аргументов командной строки пуст
         if len(args) == 0:
@@ -164,7 +174,7 @@ class OIDv6(Messages):
             if out is True:
                 print(self._args_empty.format(self.red, datetime.now().strftime(self._format_time), self.end))
 
-            return False
+            return 404
 
         # Вывод сообщения
         if out is True:
@@ -234,25 +244,27 @@ class OIDv6(Messages):
                     self.red, datetime.now().strftime(self._format_time), self.end
                 ))
 
-            return False
+            return 403
 
         self._args = args  # Аргументы командной строки
 
-        return True  # Результат
+        return 200  # Результат
 
     # Создание каталогов для категорий с файлами
     def _mkdirs(self, metadata_folder, boxes_folder, out = True):
         """
         Создание каталогов для категорий с файлами
 
-        (str, str, list, str [, bool]) -> bool
+        (str, str, list, str [, bool]) -> int
 
         Аргументы:
            metadata_folder - Директория для медаданных
            boxes_folder    - Директория для файлов с информацией
            out             - Печатать процесс выполнения
 
-        Возвращает: True если все директории успешно созданы, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - Все директории успешно созданы
+            400 - Ошибка при проверке аргументов
         """
 
         # Проверка аргументов
@@ -266,7 +278,7 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._mkdirs.__name__
                 ))
 
-            return False
+            return 400
 
         # Вывод сообщения
         if out is True:
@@ -277,14 +289,14 @@ class OIDv6(Messages):
             if not os.path.exists(folder):
                 os.makedirs(folder)
 
-        return True
+        return 200
 
     # Проверка наличия необходимого файла CSV
     def _valid_csv(self, url, file, download_miss_f, out = True):
         """
         Проверка наличия необходимого файла CSV
 
-        (str, bool [, bool]) -> bool
+        (str, bool [, bool]) -> int
 
         Аргументы:
            url             - Полный путь к файлу
@@ -292,7 +304,10 @@ class OIDv6(Messages):
            download_miss_f - Загрузка отсутствующего файла
            out             - Печатать процесс выполнения
 
-        Возвращает: True если CSV файл загружен, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - CSV файл загружен
+            400 - Ошибка при проверке аргументов
+            405 - Отмена загрузки
         """
 
         # Проверка аргументов
@@ -305,7 +320,7 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._valid_csv.__name__
                 ))
 
-            return False
+            return 400
 
         # Файл с общим названием классов не найден
         if not os.path.isfile(file):
@@ -340,25 +355,28 @@ class OIDv6(Messages):
                             os.path.basename(file))
                         )
 
-                    return False
+                    return 405
                 else:
                     cnt += 1
 
-        return True
+        return 200
 
     # Загрузка файла из URL
     def _download_file(self, url, filename, out = True):
         """
         Загрузка файла из URL
 
-        (str, str [, bool]) -> bool
+        (str, str [, bool]) -> int
 
         Аргументы:
            url      - Полный путь к файлу
            filename - Локальный файл с названиями классов
            out      - Печатать процесс выполнения
 
-        Возвращает: True если файл загружен, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - Файл загружен
+            400 - Ошибка при проверке аргументов
+            404 - Не удалось скачать файл
         """
 
         # Проверка аргументов
@@ -370,7 +388,7 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._download_file.__name__
                 ))
 
-            return False
+            return 400
 
         # Отправка GET запроса для получения CSV файла
         r = requests.get(url, headers = {'user-agent': self._headers}, stream = True)
@@ -405,7 +423,7 @@ class OIDv6(Messages):
             if out is True:
                 bar.finish()
 
-            return True
+            return 200
         else:
             # Вывод сообщения
             if out is True:
@@ -414,14 +432,14 @@ class OIDv6(Messages):
                     self.end, r.status_code
                 ))
 
-            return False
+            return 404
 
     # Загрузка изображений
     def _download_images(self, type_data, class_name, class_code, threads = 20, out = True):
         """
         Загрузка изображений
 
-        (str, str, str, int [, bool]) -> bool
+        (str, str, str, int [, bool]) -> int
 
         Аргументы:
            type_data  - Подвыборка набора данных
@@ -430,7 +448,10 @@ class OIDv6(Messages):
            threads    - Количество потоков
            out        - Печатать процесс выполнения
 
-        Возвращает: True если изображения загружены, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - Все изображения загружены
+            400 - Ошибка при проверке аргументов
+            404 - Изображения не найдены
         """
 
         # Проверка аргументов
@@ -446,25 +467,47 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._download_images.__name__
                 ))
 
-            return False
+            return 400
 
-        images_list = self._type_data[type_data]['df']['ImageID'][
-            self._type_data[type_data]['df'].LabelName == class_code
+        # Каталог с категорией
+        if self._args['multi_classes'] is False:
+            curr_type_multi = type_data
+            image_prefix = ''  # Префикс имени файла
+        else:  # Загрузка классов в одну директорию
+            curr_type_multi = class_name
+            image_prefix = self._curr_class + '_'  # Префикс имени файла
+
+        images_list = self._type_data[curr_type_multi]['df']['ImageID'][
+            self._type_data[curr_type_multi]['df'].LabelName == class_code
         ].unique().tolist()  # Всего изображений
+
+        # Формирование меток
+        if not self._args['no_labels']:
+            self._labels_list.clear()  # Очистка списка меток
 
         all_images = len(images_list)
 
-        if all_images < self._args['limit']:
-            self._args['limit'] = all_images
+        # Изображения не найдены
+        if all_images == 0:
+            # Вывод сообщения
+            if out is True:
+                print(self._images_not_found.format(self.red, curr_type_multi, self.end))
+
+            return 404
+
+        curr_limit = self._args['limit']  # Лимит загрузки изображений
+
+        if all_images < curr_limit:
+            curr_limit = all_images
 
         # Вывод сообщения
         if out is True:
-            print(self._all_images_in_class.format(type_data, all_images) + (self._limit.format(self._args['limit']) if
-                  self._args['limit'] > 0 else ''))
+            print(self._all_images_in_class.format(curr_type_multi, all_images)
+                  + (self._limit.format(curr_limit) if curr_limit > 0 else ''))
 
         # Лимит загрузки изображений
-        if self._args['limit'] == 0:
-            self._args['limit'] = all_images
+        if curr_limit == 0:
+            curr_limit = all_images
 
         # Путь к изображениям
         download_dir = os.path.join(self._args['dataset'], type_data, class_name)
@@ -472,24 +515,29 @@ class OIDv6(Messages):
         commands = []
 
         # Проход по всем изображениям
-        for i in range(0, self._args['limit']):
+        for i in range(0, curr_limit):
+            aws_local_path = os.path.join(download_dir, image_prefix + images_list[i] + self._ext)  # Путь к изображению
+
+            # Формирование меток
+            if not self._args['no_labels']:
+                self._labels_list.append(aws_local_path)  # Добавление изображение, для которого нужно загрузить метку
+
             # Изображение не сохранено ранее
-            if Path(os.path.join(download_dir, images_list[i] + self._ext)).is_file() is False:
-                path = type_data + '/' + str(images_list[i]) + '.jpg ' + '"' + download_dir + '"'
+            if Path(aws_local_path).is_file() is False:
+                path = curr_type_multi + '/' + str(images_list[i]) + '.jpg ' + '"' + aws_local_path + '"'
                 command = 'aws s3 --no-sign-request --only-show-errors cp s3://open-images-dataset/' + path
 
                 commands.append(command)
 
         # Загрузка изображений
         if len(commands) > 0:
-
             # Вывод сообщения
             if out is True:
-                i = self._args['limit'] - len(commands)  # Счетчик процесса загрузки
+                i = curr_limit - len(commands)  # Счетчик процесса загрузки
 
                 # Прогресс бар
                 bar = progressbar.ProgressBar(
-                    max_value = self._args['limit'], prefix = self._automatic_download,
+                    max_value = curr_limit, prefix = self._automatic_download,
                     min_value = 0,
                     initial_value = i,
                     widgets = [progressbar.SimpleProgress(
@@ -516,14 +564,14 @@ class OIDv6(Messages):
             if out is True:
                 print(self._already_downloaded)
 
-        return True
+        return 200
 
     # Формирование меток
     def _get_label(self, type_data, class_name, class_code, out = True):
         """
         Формирование меток
 
-        (str, str, str [, bool]) -> bool
+        (str, str, str [, bool]) -> int
 
         Аргументы:
            type_data  - Подвыборка набора данных
@@ -531,7 +579,10 @@ class OIDv6(Messages):
            class_code - Код класса
            out        - Печатать процесс выполнения
 
-        Возвращает: True если все метки сформированы, в обратном случае False
+        Возвращает: код статуса ответа
+            200 - Все метки сформированы
+            400 - Ошибка при проверке аргументов
+            403 - Не формировать метки
         """
 
         # Проверка аргументов
@@ -546,23 +597,24 @@ class OIDv6(Messages):
                     self.end, __class__.__name__ + '.' + self._get_label.__name__
                 ))
 
-            return False
+            return 400
 
         # Формирование меток
         if not self._args['no_labels']:
             # Путь к изображениям
             download_dir = os.path.join(self._args['dataset'], type_data, class_name)
 
-            # Список загруженных изображений
-            downloaded_images_list = [
-                str(p.resolve()) for p in Path(download_dir).glob('*' + self._ext)
-            ]
+            # Каталог с категорией
+            if self._args['multi_classes'] is False:
+                curr_type_multi = type_data
+            else:  # Загрузка классов в одну директорию
+                curr_type_multi = class_name
 
             # Вывод сообщения
             if out is True:
                 # Прогресс бар
                 bar = progressbar.ProgressBar(
-                    max_value = len(downloaded_images_list), prefix = self._labels,
+                    max_value = len(self._labels_list), prefix = self._labels,
                     min_value = 0,
                     initial_value = 0,
                     widgets = [progressbar.SimpleProgress(
@@ -570,9 +622,9 @@ class OIDv6(Messages):
                     )]).start()
 
             # Группировка динных по ID изображениям
-            groups = self._type_data[type_data]['df'][
-                (self._type_data[type_data]['df'].LabelName == class_code)
-            ].groupby(self._type_data[type_data]['df'].ImageID)
+            groups = self._type_data[curr_type_multi]['df'][
+                (self._type_data[curr_type_multi]['df'].LabelName == class_code)
+            ].groupby(self._type_data[curr_type_multi]['df'].ImageID)
 
             # Путь к меткам
             labels_path = os.path.join(download_dir, self._lbls)
@@ -582,20 +634,29 @@ class OIDv6(Messages):
                 os.makedirs(labels_path)
 
             # Проход по всем изображениям
-            for i, img in enumerate(downloaded_images_list):
+            for i, img in enumerate(self._labels_list):
                 curr_image = cv2.imread(img)  # Загрузка изображения
 
                 basename = os.path.basename(img).split('.')[0]
+
+                # Каталог с категорией
+                if self._args['multi_classes'] is False:
+                    basename_multi = basename
+                else:  # Загрузка классов в одну директорию
+                    basename_multi = basename.split('_')
+                    basename_multi = basename_multi[len(basename_multi) - 1]
 
                 # Текущее изображение не получено
                 if curr_image is None:
                     # Вывод сообщения
                     if out is True:
-                        print(self._photo_not_read.format(self.red, basename, self.end))
+                        print((' ' if i == 0 else '') + self._photo_not_read.format(self.red, basename, self.end))
 
                     continue
 
-                boxes = groups.get_group(basename)[['XMin', 'XMax', 'YMin', 'YMax']].values.tolist()
+                boxes = groups.get_group(basename_multi)[[
+                    'XMin', 'XMax', 'YMin', 'YMax'
+                ]].values.tolist()
 
                 # Путь к текстовому файлу, куда будут сохранены координаты
                 file_path = os.path.join(labels_path, basename + '.txt')
@@ -608,7 +669,7 @@ class OIDv6(Messages):
                         box[2] *= int(curr_image.shape[0])
                         box[3] *= int(curr_image.shape[0])
 
-                        print(class_name, box[0], box[2], box[1], box[3], file = f)
+                        print(self._curr_class, box[0], box[2], box[1], box[3], file = f)
 
                 # Вывод сообщения
                 if out is True:
@@ -618,7 +679,9 @@ class OIDv6(Messages):
             if out is True:
                 bar.finish()
 
-            return True
+            return 200
+        else:
+            return 403
 
     # ------------------------------------------------------------------------------------------------------------------
     # Внешние методы
@@ -638,7 +701,7 @@ class OIDv6(Messages):
         """
 
         # Проверка аргументов командной строки на валидность
-        if not self._valid_args(args, out):
+        if self._valid_args(args, out) != 200:
             return False
 
         metadata_dir = os.path.join(args['dataset'], self._metadata)  # Директория для метаданных
@@ -648,105 +711,103 @@ class OIDv6(Messages):
         # Загрузка данных из набора Open Images Dataset V6
         # --------------------------------------------------------------------------------------------------------------
         if args['command'] == 'downloader':
-            # Скачивать классы отдельно
-            if args['multi_classes'] is False:
-                # Создание папок для категорий с файлами
-                if self._mkdirs(metadata_dir, boxes_dir, out) is False:
-                    return False
+            # Создание папок для категорий с файлами
+            if self._mkdirs(metadata_dir, boxes_dir, out) != 200:
+                return False
+
+            # Вывод сообщения
+            if out is True:
+                Shell.add_line()  # Добавление линии во весь экран
+
+            # Проход по всем классам
+            for class_name in args['classes']:
+                class_name_del = class_name.replace('_', ' ')  # Название класса с пробелом
 
                 # Вывод сообщения
                 if out is True:
-                    Shell.add_line()  # Добавление линии во весь экран
+                    print(self._download.format(datetime.now().strftime(self._format_time), class_name_del))
 
-                # Проход по всем классам
-                for class_name in args['classes']:
-                    class_name_del = class_name.replace('_', ' ')  # Название класса с пробелом
+                if self._download_file_classes == 'y':
+                    url_class_descriptions = os.path.join(self._oid_url['v5'], self._name_file_classes)
+                    path_class_descriptions = os.path.join(metadata_dir, self._name_file_classes)
 
-                    # Вывод сообщения
-                    if out is True:
-                        print(self._download.format(datetime.now().strftime(self._format_time), class_name_del))
+                    # Проверка наличия необходимого файла CSV
+                    if self._valid_csv(url_class_descriptions, path_class_descriptions, args['yes'], out) != 200:
+                        return False
 
-                    if self._download_file_classes == 'y':
-                        url_class_descriptions = os.path.join(self._oid_url['v5'], self._name_file_classes)
-                        path_class_descriptions = os.path.join(metadata_dir, self._name_file_classes)
+                    # Таблица с названиями классов не заполнена
+                    if self._df_classes is None:
+                        self._df_classes = pd.read_csv(
+                            os.path.join(metadata_dir, self._name_file_classes), header = None
+                        )
+
+                    try:
+                        # Код класса
+                        class_code = self._df_classes.loc[
+                            self._df_classes[1].str.lower() == class_name_del
+                        ].values[0][0]
+                    except IndexError:
+                        # Вывод сообщения
+                        if out is True:
+                            print(self._index_error.format(self.red, class_name_del, self.end))
+                            Shell.add_line()  # Добавление линии во весь экран
+
+                        continue
+
+                    # Выборка из набора данных
+                    if args['type_data'] not in self._type_data.keys():
+                        type_data = self._type_data.keys()
+                    else:
+                        type_data = [args['type_data']]
+
+                    # Проход по выбранным наборам данных
+                    for curr_type_data in type_data:
+                        # Каталог с категорией
+                        if args['multi_classes'] is False:
+                            curr_type_multi = (curr_type_data, class_name)
+                        else:  # Загрузка классов в одну директорию
+                            curr_type_multi = (self._multi, curr_type_data)
+
+                        # Путь к директории, куда будут сохранены изображения
+                        curr_folder = os.path.join(self._args['dataset'], curr_type_multi[0], curr_type_multi[1])
+
+                        # Создание директории, куда будут сохранены изображения, если она не существует
+                        if not os.path.exists(curr_folder):
+                            os.makedirs(curr_folder)
+
+                        url_annotations = os.path.join(
+                            self._type_data[curr_type_data]['url'],
+                            self._type_data[curr_type_data]['bbox']
+                        )
+                        curr_annotations = os.path.join(boxes_dir, self._type_data[curr_type_data]['bbox'])
 
                         # Проверка наличия необходимого файла CSV
-                        if not self._valid_csv(url_class_descriptions, path_class_descriptions, args['yes'], out):
+                        if self._valid_csv(url_annotations, curr_annotations, args['yes'], out) != 200:
                             return False
 
-                        # Таблица с названиями классов не заполнена
-                        if self._df_classes is None:
-                            self._df_classes = pd.read_csv(
-                                os.path.join(metadata_dir, self._name_file_classes), header = None
-                            )
-
-                        try:
-                            # Код класса
-                            class_code = self._df_classes.loc[
-                                self._df_classes[1].str.lower() == class_name_del
-                            ].values[0][0]
-                        except IndexError:
+                        # Таблица с набором
+                        if self._type_data[curr_type_data]['df'] is None:
                             # Вывод сообщения
                             if out is True:
-                                print(self._index_error.format(self.red, class_name_del, self.end))
-                                Shell.add_line()  # Добавление линии во весь экран
+                                print(self._extract.format(self._type_data[curr_type_data]['bbox']))
 
+                            self._type_data[curr_type_data]['df'] = pd.read_csv(curr_annotations)
+
+                        self._curr_class = class_name  # Текущий класс
+
+                        # Загрузка изображений
+                        res_download_images = \
+                            self._download_images(curr_type_multi[0], curr_type_multi[1], class_code, 20, out)
+
+                        # Загрузка изображений
+                        if res_download_images == 400:
+                            return False
+                        elif res_download_images == 404:
                             continue
-
-                        # Выборка из набора данных
-                        if args['type_data'] not in self._type_data.keys():
-                            type_data = self._type_data.keys()
-                        else:
-                            type_data = [args['type_data']]
-
-                        # Проход по выбранным наборам данных
-                        for curr_type_data in type_data:
-                            # Каталог с категорией
-                            curr_folder = os.path.join(self._args['dataset'], curr_type_data, class_name)
-
-                            # Создание директории, куда будут сохранены изображения, если она не существует
-                            if not os.path.exists(curr_folder):
-                                os.makedirs(curr_folder)
-
-                            url_annotations = os.path.join(
-                                self._type_data[curr_type_data]['url'],
-                                self._type_data[curr_type_data]['bbox']
-                            )
-                            curr_annotations = os.path.join(boxes_dir, self._type_data[curr_type_data]['bbox'])
-
-                            # Проверка наличия необходимого файла CSV
-                            if not self._valid_csv(url_annotations, curr_annotations, args['yes'], out):
+                        elif res_download_images == 200:
+                            # Формирование меток
+                            if self._get_label(curr_type_multi[0], curr_type_multi[1], class_code, out) == 400:
                                 return False
 
-                            # Таблица с набором
-                            if self._type_data[curr_type_data]['df'] is None:
-                                # Вывод сообщения
-                                if out is True:
-                                    print(self._extract.format(self._type_data[curr_type_data]['bbox']))
-
-                                self._type_data[curr_type_data]['df'] = pd.read_csv(curr_annotations)
-
-                            # Загрузка изображений
-                            if not self._download_images(curr_type_data, class_name, class_code, 20, out):
-                                return False
-
-                            #  Формирование меток
-                            if not self._get_label(curr_type_data, class_name, class_code, out):
-                                return False
-
-                    Shell.add_line()  # Добавление линии во весь экран
-            else:
-                # TODO РАЗРАБОТКА
-
-                # Вывод сообщения
-                if out is True:
-                    Shell.add_line()  # Добавление линии во весь экран
-
-                    print(self._in_developing.format(
-                        self.green, datetime.now().strftime(self._format_time), self.end,
-                        'Функция "Загрузка всех классов в одну директорию"'
-                    ))
-
-                    Shell.add_line()  # Добавление линии во весь экран
-
+                Shell.add_line()  # Добавление линии во весь экран
         return True
