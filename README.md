@@ -31,6 +31,11 @@ pip install --upgrade oidv6
 `opencv-contrib-python` | `4.2.0.34` | ![PyPI](https://img.shields.io/pypi/v/opencv-contrib-python) |
 `awscli` | `1.18.69` | ![PyPI](https://img.shields.io/pypi/v/awscli) |
 
+## Полезные ресурсы
+
+- [Официальный сайт Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
+- [Список всех классов, которые возможно загрузить](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt)
+
 ## [Класс для массовой загрузки набора данных Open Images Dataset V6 (OIDv6)](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
 ### Аргументы командной строки
@@ -50,12 +55,14 @@ pip install --upgrade oidv6
 
 <h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
 
-1. Загрузка классов (`apple`, `banana`) из наборов `train`, `validation` и `test` с метками в полуавтоматическом режиме и лимитом изображений = `4`
+>  Классы, которые составлены из нескольких слов, следует обрамлять кавычками (если они переданы напрямую в командную строку). Например: `"Organ (Musical Instrument)"`
+
+1. Загрузка классов (`apple`, `banana`, `Kitchen & dining room table`) из наборов `train`, `validation` и `test` с метками в полуавтоматическом режиме и лимитом изображений = `4`
 
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana --limit 4
+    > oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana "Kitchen & dining room table" --limit 4
     > ```
 
 2. Загрузка тренировочных классов (`cat`, `dog`) из набора `train` с метками в автоматическом режиме и лимитом изображений = `10`
@@ -66,12 +73,13 @@ pip install --upgrade oidv6
     > oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
     > ```
 
-3. Загрузка валидационных классов (`person` - текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
+3. Загрузка валидационных классов (см. текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
 
     > Текстовый файл
     >
     > ```text
     > person
+    > Organ (Musical Instrument)
     > ```
 
     > CMD

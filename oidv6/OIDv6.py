@@ -721,6 +721,7 @@ class OIDv6(Messages):
 
             # Проход по всем классам
             for class_name in args['classes']:
+                class_name = class_name.replace(' ', '_')  # Название класса с разделителем
                 class_name_del = class_name.replace('_', ' ')  # Название класса с пробелом
 
                 # Вывод сообщения

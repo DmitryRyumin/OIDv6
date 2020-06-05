@@ -2,6 +2,16 @@
 
 ## 5 июня 2020 года
 
+> `1.0.1`
+
+<h4><span style="color:#008000;">Что нового</span></h4>
+
+- Добавлен [файл](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt) со списком всех классов, которые возможно загрузить
+
+<h4><span style="color:#DB534F;">Исправления</span></h4>
+
+- Исправлена ошибка в методе `download` класса [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+
 > `1.0.0`
 
 <h4><span style="color:#008000;">Что нового</span></h4>
@@ -17,6 +27,6 @@
 
 - Исправлена ошибка в методе `_download_images` класса [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
-## ~~2 июня 2020 года~~
+## 2 июня 2020 года
 
 > Первая версия пакета `1.0.0-rc7`
