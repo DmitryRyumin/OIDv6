@@ -7,7 +7,7 @@
 <h4><span style="color:#008000;">Что нового</span></h4>
 
 - Добавлена загрузка классов в одну директорию (флаг командной строки `--multi_classes`)
-- Добавлен новый класс [Switch](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/modules/core/switch.py) в [ядро]('https://github.com/DmitryRyumin/OIDv6/tree/master/oidv6/modules/core')
+- Добавлен новый класс [Switch](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/modules/core/switch.py)
 
 <h4><span style="color:#247CB4;">Изменения</span></h4>
 
