@@ -59,7 +59,7 @@ pip install --upgrade oidv6
 
 ---
 
->  **Note!**Classes that are composed of several words should be surrounded by quotation marks (if they are passed directly to the command line). For example: `"Organ (Musical Instrument)"`
+>  **Note!** Classes that are composed of several words should be surrounded by quotation marks (if they are passed directly to the command line). For example: `"Organ (Musical Instrument)"`
 
 ---
 
