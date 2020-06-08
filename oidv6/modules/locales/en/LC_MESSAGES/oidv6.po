@@ -1,0 +1,183 @@
+# oidv6 English translation.
+# Copyright (C) 2020 Dmitry Ryumin
+# Dmitry Ryumin <dl_03.03.1991@mail.ru>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2020-06-07 15:33+0300\n"
+"PO-Revision-Date: 2020-06-07 15:40+0300\n"
+"Last-Translator: Dmitry Ryumin <dl_03.03.1991@mail.ru>\n"
+"Language-Team: English <dl_03.03.1991@mail.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: oidv6/OIDv6.py:40
+msgid "[{}{}{}] Словарь аргументов командной строки пуст ..."
+msgstr "[{}{}{}] Command line argument dictionary is empty ..."
+
+#: oidv6/OIDv6.py:41
+msgid "[{}] Проверка аргументов командной строки на валидность ..."
+msgstr "[{}] Checking command line arguments for validity ..."
+
+#: oidv6/OIDv6.py:42
+msgid "[{}] Создание каталогов для служебных файлов ..."
+msgstr "[{}] Creating Directories for Metadata ..."
+
+#: oidv6/OIDv6.py:43
+msgid "[{}] Загрузка \"{}\" ..."
+msgstr "[{}] Downloading \"{}\" ..."
+
+#: oidv6/OIDv6.py:44
+msgid "Извлечение данных из \"{}\" ..."
+msgstr "Extracting data from \"{}\" ..."
+
+#: oidv6/OIDv6.py:45
+msgid "{}Категория \"{}\" не найдена, пропуск ... {}"
+msgstr "{}Category \"{}\" not found, skipping ... {}"
+
+#: oidv6/OIDv6.py:46
+msgid "Отсутствует файл \"{}\" ..."
+msgstr "File \"{}\" not found ..."
+
+#: oidv6/OIDv6.py:47
+msgid "Автоматическая загрузка ..."
+msgstr "Automatic download ..."
+
+#: oidv6/OIDv6.py:48
+msgid "Скачать отсутствующий файл? [Y/n]"
+msgstr "Do you want to download the missing file? [Y/n]"
+
+#: oidv6/OIDv6.py:50
+msgid "[{}{}{}] Отмена загрузки ..."
+msgstr "[{}{}{}] Download has been canceled ..."
+
+#: oidv6/OIDv6.py:51
+msgid "[{}{}{}] Не удалось скачать файл (ошибка {}) ..."
+msgstr "[{}{}{}] Failed to download file (error {}) ..."
+
+#: oidv6/OIDv6.py:52
+msgid "Все изображения были загружены ранее ..."
+msgstr "All images have been downloaded before ..."
+
+#: oidv6/OIDv6.py:53
+msgid "Всего \"{}\" изображений {} ..."
+msgstr "Total \"{}\" images {} ..."
+
+#: oidv6/OIDv6.py:54
+msgid "{}Изображений \"{}\" не найдено, пропуск ...{}"
+msgstr "{}Images \"{}\" not found, skipping ...{}"
+
+#: oidv6/OIDv6.py:55
+msgid "из них будет загружено {} ..."
+msgstr "of which will be loaded {} ..."
+
+#: oidv6/OIDv6.py:56
+msgid "Формирование меток ..."
+msgstr "Formation of labels ..."
+
+#: oidv6/OIDv6.py:57
+msgid "{}Изображение \"{}\" повреждено ...{}"
+msgstr "{}Image \"{}\" is corrupted ...{}"
+
+#: oidv6/OIDv6.py:60
+msgid "[{}{}{}] {} в разработке ..."
+msgstr "[{}{}{}] {} in developing ..."
+
+#: oidv6/OIDv6.py:409 oidv6/OIDv6.py:545 oidv6/OIDv6.py:622
+msgid "из"
+msgstr "out of"
+
+#: oidv6/modules/core/config.py:157
+msgid ""
+"[{}] Запуск: \n"
+"\tАвтор: {}\n"
+"\tEmail: {}\n"
+"\tСопровождающие: {}\n"
+"\tВерсия: {}"
+msgstr ""
+"[{}] Start: \n"
+"\tAuthor: {}\n"
+"\tEmail: {}\n"
+"\tMaintainer: {}\n"
+"\tVersion: {}"
+
+#: oidv6/modules/core/config.py:161
+msgid "[{}{}{}] Неверные типы аргументов в \"{}\" ..."
+msgstr "[{}{}{}] Invalid argument types in \"{}\" ..."
+
+#: oidv6/modules/core/config.py:163
+msgid "[{}{}{}] Необходимые значения в командной строке не найдены ..."
+msgstr "[{}{}{}] Required command line values​not found ..."
+
+#: oidv6/modules/core/core.py:54
+msgid "Массовая загрузка набора данных Open Images Dataset V6 (OIDv6)"
+msgstr "Downloading single or multiple classes from the Open Images V6 Dataset (OIDv6)"
+
+#: oidv6/samples/run.py:38
+msgid "{}{}OIDv6 - Массовая загрузка набора данных Open Images Dataset V6 ...{}"
+msgstr "{}{}OIDv6 - Downloading single or multiple classes from the Open Images V6 Dataset ...{}"
+
+#: oidv6/samples/run.py:75
+msgid "Команда загрузки"
+msgstr "Boot command"
+
+#: oidv6/samples/run.py:77
+msgid "путь_к_директории"
+msgstr "path_to_directory"
+
+#: oidv6/samples/run.py:79
+msgid "Корневая директория для сохранения OIDv6, значение по умолчанию:"
+msgstr "The root directory for saving OIDv6, default value:"
+
+#: oidv6/samples/run.py:82
+msgid "или"
+msgstr "or"
+
+#: oidv6/samples/run.py:83
+msgid "Набор данных, значение по умолчанию:"
+msgstr "Dataset, default value:"
+
+#: oidv6/samples/run.py:84
+msgid "название_класса"
+msgstr "class_name"
+
+#: oidv6/samples/run.py:85
+msgid "Последовательность названий классов или текстовый файл"
+msgstr "Sequence of class names or text file"
+
+#: oidv6/samples/run.py:87
+msgid "Загрузка классов в одну директорию"
+msgstr "Downloading classes in one directory"
+
+#: oidv6/samples/run.py:88
+msgid "целое_число"
+msgstr "integer"
+
+#: oidv6/samples/run.py:89
+msgid "Лимит загрузки изображений, значение по умолчанию:"
+msgstr "Images Upload Limit, default value:"
+
+#: oidv6/samples/run.py:90
+msgid "нет лимита"
+msgstr "no limit"
+
+#: oidv6/samples/run.py:93
+msgid "Автоматическая загрузка служебных файлов"
+msgstr "Automatic download metadata"
+
+#: oidv6/samples/run.py:95
+msgid "Не формировать метки"
+msgstr "No labeling"
+
+#: oidv6/samples/run.py:97
+msgid "Вывод метаданных"
+msgstr "Metadata output"
+
+#: oidv6/samples/run.py:99
+msgid "Не очищать консоль перед выполнением"
+msgstr "Do not clean the console before running"
+

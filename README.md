@@ -1,4 +1,4 @@
-# Массовая загрузка набора данных Open Images Dataset V6
+# Download single or multiple classes from the Open Images V6 dataset
 
 ![PyPI](https://img.shields.io/pypi/v/oidv6)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/oidv6)
@@ -6,24 +6,24 @@
 ![PyPI - Status](https://img.shields.io/pypi/status/oidv6)
 ![PyPI - License](https://img.shields.io/pypi/l/oidv6)
 
-## [История релизов](https://github.com/DmitryRyumin/OIDv6/blob/master/NOTES.md)
+## [Release history](https://github.com/DmitryRyumin/OIDv6/blob/master/NOTES.md)       [Documentation in Russian](https://github.com/DmitryRyumin/OIDv6/blob/master/README_RU.md)
 
-## Установка
+## Installation
 
 ```shell script
 pip install oidv6
 ```
 
-## Обновление
+## Update
 
 ```shell script
 pip install --upgrade oidv6
 ```
 
-## Зависимости
+## Required packages
 
-| Пакеты | Минимальная версия | Текущая версия |
-| ------ | ------------------ | -------------- |
+| Packages | Min version | Current version |
+| -------- | ----------- | --------------- |
 `requests` | `2.23.0` | ![PyPI](https://img.shields.io/pypi/v/requests) |
 `numpy` | `1.18.4` | ![PyPI](https://img.shields.io/pypi/v/numpy) |
 `pandas` | `1.0.4` | ![PyPI](https://img.shields.io/pypi/v/pandas) |
@@ -31,55 +31,56 @@ pip install --upgrade oidv6
 `opencv-contrib-python` | `4.2.0.34` | ![PyPI](https://img.shields.io/pypi/v/opencv-contrib-python) |
 `awscli` | `1.18.69` | ![PyPI](https://img.shields.io/pypi/v/awscli) |
 
-## Полезные ресурсы
+## Useful resources
 
-- [Официальный сайт Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
-- [Список всех классов, которые возможно загрузить](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt)
+- [Official site Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
+- [List of all classes that can be downloaded](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt)
 
-## [Класс для массовой загрузки набора данных Open Images Dataset V6 (OIDv6)](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+## [Class for multiple download of the Open Images Dataset V6 dataset (OIDv6)](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
-### Аргументы командной строки
+### Command line arguments
 
-| Аргумент&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Тип | Описание | Допустимые значения |
+| Argument&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Type | Description | Valid Values |
 | -------------------------- | ---  | -------- | ------------------- |
-| command | str | Команда загрузки | `downloader` |
-| --dataset | str | Корневая директория для сохранения OIDv6<br>`Значение по умолчанию: OIDv6` | - |
-| --type_data | str | Набор данных<br>`Значение по умолчанию: train` | `train`<br>`validation`<br>`test`<br>`all` |
-| --classes | str | Последовательность названий классов или текстовый файл | - |
-| --limit | int | Лимит загрузки изображений<br>`Значение по умолчанию: 0 (нет лимита)` | От `0` до `∞` |
-| --multi_classes | bool | Загрузка классов в одну директорию | Без значений |
-| --yes | bool | Автоматическая загрузка служебных файлов | Без значений |
-| --no_labels | bool | Автоматическая загрузка служебных файлов | Без значений |
-| --hide_metadata | bool | Вывод метаданных | Без значений |
-| --no_clear_shell | bool | Не очищать консоль перед выполнением | Без значений |
+| command | str | Boot command | `downloader` |
+| command | str | Language<br>`Default value: en` | `en`<br>`ru` |
+| --dataset | str | The root directory for saving OIDv6<br>`Default value: OIDv6` | - |
+| --type_data | str | Dataset<br>`Default value: train` | `train`<br>`validation`<br>`test`<br>`all` |
+| --classes | str | Sequence of class names or text file | - |
+| --limit | int | Images Upload Limit<br>`Default value: 0 (no limit)` | From `0` to `∞` |
+| --multi_classes | bool | Downloading classes in one directory | No value |
+| --yes | bool | Automatic download metadata | No value |
+| --no_labels | bool | No labeling | No value |
+| --hide_metadata | bool | Вывод метаданных | No value |
+| --no_clear_shell | bool | Do not clean the console before running | No value |
 
-<h4 align="center"><span style="color:#EC256F;">Примеры</span></h4>
-
----
-
->  **Примечание!** Классы, которые составлены из нескольких слов, следует обрамлять кавычками (если они переданы напрямую в командную строку). Например: `"Organ (Musical Instrument)"`
+<h4 align="center"><span style="color:#EC256F;">Examples</span></h4>
 
 ---
 
-1. Загрузка классов (`apple`, `banana`, `Kitchen & dining room table`) из наборов `train`, `validation` и `test` с метками в полуавтоматическом режиме и лимитом изображений = `4`
+>  **Note!**Classes that are composed of several words should be surrounded by quotation marks (if they are passed directly to the command line). For example: `"Organ (Musical Instrument)"`
+
+---
+
+1. Downloading classes (`apple`, `banana`, `Kitchen & dining room table`) from the `train`, `validation` and `test` sets with labels in semi-automatic mode and image = `4` (Language: `Russian`)
 
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data all --classes apple banana "Kitchen & dining room table" --limit 4
+    > oidv6 downloader ru --dataset path_to_directory --type_data all --classes apple banana "Kitchen & dining room table" --limit 4
     > ```
 
-2. Загрузка тренировочных классов (`cat`, `dog`) из набора `train` с метками в автоматическом режиме и лимитом изображений = `10`
+2. Downloading training classes (`cat`, `dog`) from the `train` set with tags in automatic mode and image limit = `10` (Language: `English`)
 
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data train --classes Cat dOg --limit 10 --yes
+    > oidv6 downloader en --dataset path_to_directory --type_data train --classes Cat dOg --limit 10 --yes
     > ```
 
-3. Загрузка валидационных классов (см. текстовый файл) из набора `validation` с метками в автоматическом режиме и лимитом изображений = `10`
+3. Downloading validation classes (see text file) from the `validation` set with labels in automatic mode and image limit = `10` (Language: `English`)
 
-    > Текстовый файл
+    > Text file
     >
     > ```text
     > person
@@ -89,13 +90,13 @@ pip install --upgrade oidv6
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data validation --classes путь_к_текстовому_файлу --limit 10 --yes
+    > oidv6 downloader --dataset path_to_directory --type_data validation --classes text_file_path --limit 10 --yes
     > ```
 
-4. Мультизагрузка классов (`axe`, `calculator`) из наборов `train`, `validation` и `test` с метками в автоматическом режиме и лимитом изображений = `12`
+4. Downloading classes (`axe`, `calculator`) in one directory from the `train`, `validation` and `test` sets with labels in automatic mode and image limit = `12` (Language: `English`)
 
     > CMD
     >
     > ```shell script
-    > oidv6 downloader --dataset путь_к_директории --type_data all --classes axe calculator --limit 12 --multi_classes --yes
+    > oidv6 downloader --dataset path_to_directory --type_data all --classes axe calculator --limit 12 --multi_classes --yes
     > ```

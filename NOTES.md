@@ -1,38 +1,50 @@
-# Массовая загрузка набора данных Open Images Dataset V6
+# Download single or multiple classes from the Open Images V6 dataset
 
-## 5 июня 2020 года
+## June 9, 2020
+
+> `1.0.3`
+
+<h4><span style="color:#008000;">What's new</span></h4>
+
+- Added English support (command line argument `en`)
+
+<h4><span style="color:#247CB4;">Changes</span></h4>
+
+- Default language changed from `Russian` to `English`
+
+## June 5, 2020
 
 > `1.0.2`
 
-<h4><span style="color:#DB534F;">Исправления</span></h4>
+<h4><span style="color:#DB534F;">Changes</span></h4>
 
-- Исправлены опечатки
+- Fixed typos
 
 > `1.0.1`
 
-<h4><span style="color:#008000;">Что нового</span></h4>
+<h4><span style="color:#008000;">What's new</span></h4>
 
-- Добавлен [файл](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt) со списком всех классов, которые возможно загрузить
+- Added [file](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt) with a list of all classes that can be downloaded
 
-<h4><span style="color:#DB534F;">Исправления</span></h4>
+<h4><span style="color:#DB534F;">Changes</span></h4>
 
-- Исправлена ошибка в методе `download` класса [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+- Fixed bug in the `download` method of the class [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
 > `1.0.0`
 
-<h4><span style="color:#008000;">Что нового</span></h4>
+<h4><span style="color:#008000;">What's new</span></h4>
 
-- Добавлена загрузка классов в одну директорию (флаг командной строки `--multi_classes`)
-- Добавлен новый класс [Switch](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/modules/core/switch.py)
+- Added downloading classes in one directory (command line flag `--multi_classes`)
+- Added new class [Switch](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/modules/core/switch.py)
 
-<h4><span style="color:#247CB4;">Изменения</span></h4>
+<h4><span style="color:#247CB4;">Changes</span></h4>
 
-- Переработаны внутренние методы класса [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py) (возвращают код статуса ответа)
+- Redesigned internal class [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py) methods (return a response status code)
 
-<h4><span style="color:#DB534F;">Исправления</span></h4>
+<h4><span style="color:#DB534F;">Fixed bugs</span></h4>
 
-- Исправлена ошибка в методе `_download_images` класса [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+- Fixed bug in the method `_download_images` of the class [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
-## 2 июня 2020 года
+## June 2, 2020
 
-> Первая версия пакета `1.0.0-rc7`
+> First version of the package `1.0.0-rc7`

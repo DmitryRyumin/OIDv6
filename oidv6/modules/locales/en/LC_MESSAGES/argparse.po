@@ -1,0 +1,105 @@
+# argparse English translation.
+# Copyright (C) 2020 Dmitry Ryumin
+# Dmitry Ryumin <dl_03.03.1991@mail.ru>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2020-06-07 15:33+0300\n"
+"PO-Revision-Date: 2020-06-07 15:40+0300\n"
+"Last-Translator: Dmitry Ryumin <dl_03.03.1991@mail.ru>\n"
+"Language-Team: English <dl_03.03.1991@mail.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+msgid "usage: "
+msgstr ""
+
+msgid ".__call__() not defined"
+msgstr ""
+
+msgid "unknown parser %(parser_name)r (choices: %(choices)s)"
+msgstr ""
+
+msgid "argument \"-\" with mode %r"
+msgstr ""
+
+msgid "can't open '%(filename)s': %(error)s"
+msgstr ""
+
+msgid "cannot merge actions - two groups are named %r"
+msgstr ""
+
+msgid "'required' is an invalid argument for positionals"
+msgstr ""
+
+msgid "invalid option string %(option)r: must start with a character %(prefix_chars)r"
+msgstr ""
+
+msgid "dest= is required for options like %r"
+msgstr ""
+
+msgid "invalid conflict_resolution value: %r"
+msgstr ""
+
+msgid "mutually exclusive arguments must be optional"
+msgstr ""
+
+msgid "positional arguments"
+msgstr ""
+
+msgid "optional arguments"
+msgstr ""
+
+msgid "show this help message and exit"
+msgstr ""
+
+msgid "cannot have multiple subparser arguments"
+msgstr ""
+
+msgid "unrecognized arguments: %s"
+msgstr ""
+
+msgid "not allowed with argument %s"
+msgstr ""
+
+msgid "ignored explicit argument %r"
+msgstr ""
+
+msgid "the following arguments are required: %s"
+msgstr ""
+
+msgid "one of the arguments %s is required"
+msgstr ""
+
+msgid "expected one argument"
+msgstr ""
+
+msgid "expected at most one argument"
+msgstr ""
+
+msgid "expected at least one argument"
+msgstr ""
+
+msgid "ambiguous option: %(option)s could match %(matches)s"
+msgstr ""
+
+msgid "unexpected option string: %s"
+msgstr ""
+
+msgid "%r is not callable"
+msgstr ""
+
+msgid "invalid %(type)s value: %(value)r"
+msgstr ""
+
+msgid "invalid choice: %(value)r (choose from %(choices)s)"
+msgstr ""
+
+msgid ""
+"%(prog)s: error: %(message)s\n"
+msgstr ""
+

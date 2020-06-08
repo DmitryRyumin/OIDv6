@@ -1,1 +1,2 @@
 include oidv6/modules/*
+recursive-exclude oidv6/modules/*.pot oidv6/modules/*.po

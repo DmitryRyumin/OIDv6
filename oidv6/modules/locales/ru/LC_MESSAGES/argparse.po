@@ -1,0 +1,106 @@
+# argparse Russian translation.
+# Copyright (C) 2020 Dmitry Ryumin
+# Dmitry Ryumin <dl_03.03.1991@mail.ru>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2020-06-07 15:33+0300\n"
+"PO-Revision-Date: 2020-06-07 15:40+0300\n"
+"Last-Translator: Dmitry Ryumin <dl_03.03.1991@mail.ru>\n"
+"Language-Team: Russian <dl_03.03.1991@mail.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+msgid "usage: "
+msgstr "использование: "
+
+msgid ".__call__() not defined"
+msgstr ".__call__() не определен"
+
+msgid "unknown parser %(parser_name)r (choices: %(choices)s)"
+msgstr "неизвестный парсер %(parser_name)r (варианты выбора: %(choices)s)"
+
+msgid "argument \"-\" with mode %r"
+msgstr "аргумент \"-\" с режимом %r"
+
+msgid "can't open '%(filename)s': %(error)s"
+msgstr "ошибка %(error)s при открытии файла '%(filename)s'"
+
+msgid "cannot merge actions - two groups are named %r"
+msgstr "невозможно объединить действия - две группы названы %r"
+
+msgid "'required' is an invalid argument for positionals"
+msgstr "'required' неверный аргумент"
+
+msgid "invalid option string %(option)r: must start with a character %(prefix_chars)r"
+msgstr "неверная строка параметров %(option)r: должна начинаться с символа %(prefix_chars)r"
+
+msgid "dest= is required for options like %r"
+msgstr "dest= необходим для таких опций как %r"
+
+msgid "invalid conflict_resolution value: %r"
+msgstr "неверное значение разрешения конфликта: %r"
+
+msgid "mutually exclusive arguments must be optional"
+msgstr "взаимоисключающие аргументы должны быть необязательными"
+
+msgid "positional arguments"
+msgstr "позиционные аргументы"
+
+msgid "optional arguments"
+msgstr "необязательные аргументы"
+
+msgid "show this help message and exit"
+msgstr ""
+
+msgid "cannot have multiple subparser arguments"
+msgstr "показать это справочное сообщение и выйти"
+
+msgid "unrecognized arguments: %s"
+msgstr "непризнанные аргументы: %s"
+
+msgid "not allowed with argument %s"
+msgstr "не допускается с аргументом %s"
+
+msgid "ignored explicit argument %r"
+msgstr "игнорируется явный аргумент %r"
+
+msgid "the following arguments are required: %s"
+msgstr "необходимы следующие аргументы: %s"
+
+msgid "one of the arguments %s is required"
+msgstr "требуется один из аргументов %s"
+
+msgid "expected one argument"
+msgstr "ожидается один аргумент"
+
+msgid "expected at most one argument"
+msgstr "ожидается не более одного аргумента"
+
+msgid "expected at least one argument"
+msgstr "ожидается хотя бы один аргумент"
+
+msgid "ambiguous option: %(option)s could match %(matches)s"
+msgstr "неоднозначная опция: %(option)s может соответствовать %(matches)s"
+
+msgid "unexpected option string: %s"
+msgstr "неожиданный вариант строки: %s"
+
+msgid "%r is not callable"
+msgstr "%r не вызывается"
+
+msgid "invalid %(type)s value: %(value)r"
+msgstr "неверное %(type)s значение: %(value)r"
+
+msgid "invalid choice: %(value)r (choose from %(choices)s)"
+msgstr "неверное значение: %(value)r (допустимые значения: %(choices)s)"
+
+msgid ""
+"%(prog)s: error: %(message)s\n"
+msgstr ""
+"%(prog)s: ошибка: %(message)s\n"
+
