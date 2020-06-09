@@ -63,7 +63,7 @@ pip install --upgrade oidv6
 
 ---
 
-1. Downloading classes (`apple`, `banana`, `Kitchen & dining room table`) from the `train`, `validation` and `test` sets with labels in semi-automatic mode and image = `4` (Language: `Russian`)
+1. Downloading classes (`apple`, `banana`, `Kitchen & dining room table`) from the `train`, `validation` and `test` sets with labels in semi-automatic mode and image limit = `4` (Language: `Russian`)
 
     > CMD
     >
