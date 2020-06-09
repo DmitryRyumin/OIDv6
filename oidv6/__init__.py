@@ -7,7 +7,7 @@ __title__ = 'OIDv6'
 __summary__ = 'Download single or multiple classes from the Open Images V6 dataset'
 __uri__ = 'https://github.com/DmitryRyumin/OIDv6'
 
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 
 __author__ = 'Dmitry Ryumin'
 __email__ = 'dl_03.03.1991@mail.ru'
