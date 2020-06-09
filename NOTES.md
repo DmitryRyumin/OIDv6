@@ -1,4 +1,4 @@
-# Download single or multiple classes from the Open Images V6 dataset
+# Download single or multiple classes from the OIDv6
 
 ## June 9, 2020
 
