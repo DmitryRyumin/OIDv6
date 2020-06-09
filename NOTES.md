@@ -2,9 +2,15 @@
 
 ## June 9, 2020
 
+> `1.0.5`
+
+<h4><span style="color:#DB534F;">Fixed bugs</span></h4>
+
+- Fixed a bug where the Russian language did not work
+
 > `1.0.4` = `1.0.3`
 
-<h4><span style="color:#DB534F;">Changes</span></h4>
+<h4><span style="color:#DB534F;">Fixed bugs</span></h4>
 
 - Fixed typos
 
@@ -22,7 +28,7 @@
 
 > `1.0.2`
 
-<h4><span style="color:#DB534F;">Changes</span></h4>
+<h4><span style="color:#DB534F;">Fixed bugs</span></h4>
 
 - Fixed typos
 
@@ -32,7 +38,7 @@
 
 - Added [file](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt) with a list of all classes that can be downloaded
 
-<h4><span style="color:#DB534F;">Changes</span></h4>
+<h4><span style="color:#DB534F;">Fixed bugs</span></h4>
 
 - Fixed bug in the `download` method of the class [OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 

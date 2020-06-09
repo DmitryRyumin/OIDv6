@@ -26,7 +26,8 @@ class Language:
     # ------------------------------------------------------------------------------------------------------------------
 
     def __init__(self):
-        self._path_to_locales = 'oidv6/modules/locales'  # Директория с поддерживаемыми языками
+        # Директория с поддерживаемыми языками
+        self._path_to_locales = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'locales'))
         self._lang_default = 'en'  # Язык по умолчанию
 
         self._locales = self._get_languages()  # Поддерживаемые языки
