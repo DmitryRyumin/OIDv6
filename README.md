@@ -1,4 +1,4 @@
-# Download single or multiple classes from the Open Images V6 dataset
+# Download single or multiple classes from the OIDv6
 
 ![PyPI](https://img.shields.io/pypi/v/oidv6)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/oidv6)
@@ -37,7 +37,7 @@ pip install --upgrade oidv6
 - [Official site Open Images Dataset V6](https://storage.googleapis.com/openimages/web/index.html)
 - [List of all classes that can be downloaded](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/classes.txt)
 
-## [Class for multiple download of the Open Images Dataset V6 dataset (OIDv6)](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
+## [Class for multiple download of the OIDv6](https://github.com/DmitryRyumin/OIDv6/blob/master/oidv6/OIDv6.py)
 
 ### Command line arguments
 
