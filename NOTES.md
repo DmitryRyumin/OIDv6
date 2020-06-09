@@ -2,7 +2,7 @@
 
 ## June 9, 2020
 
-> `1.0.4`
+> `1.0.4` = `1.0.3`
 
 <h4><span style="color:#DB534F;">Changes</span></h4>
 
