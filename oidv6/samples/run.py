@@ -4,7 +4,7 @@
 """
 Массовая загрузка набора данных Open Images Dataset V6
 
-python oidv6/samples/run.py <command> --classes названия_классов_или_текстовый_файл
+python oidv6/samples/run.py <command> <command> --classes названия_классов_или_текстовый_файл
     [--dataset Dataset --type_data train --limit 0 --multi_classes --yes --no_labels --hide_metadata --no_clear_shell]
 """
 
@@ -63,7 +63,7 @@ class Run(Messages):
         ([bool]) -> None or dict
 
         Аргументы:
-           conv_to_dict - Преобразование списка аргументов командной строки в словарь
+            conv_to_dict - Преобразование списка аргументов командной строки в словарь
 
         Возвращает: dict если парсер командной строки окончательный, в обратном случае None
         """
@@ -115,7 +115,7 @@ class Run(Messages):
         ([module, module, bool, bool]) -> None
 
         Аргументы:
-           out - Печатать процесс выполнения
+            out - Печатать процесс выполнения
         """
 
         # Проверка аргументов

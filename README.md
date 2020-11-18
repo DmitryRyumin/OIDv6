@@ -3,6 +3,8 @@
 ![PyPI](https://img.shields.io/pypi/v/oidv6)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/oidv6)
 ![PyPI - Implementation](https://img.shields.io/pypi/implementation/oidv6)
+![GitHub repo size](https://img.shields.io/github/repo-size/dmitryryumin/oidv6)
+[![Downloads](https://pepy.tech/badge/oidv6)](https://pepy.tech/project/oidv6)
 ![PyPI - Status](https://img.shields.io/pypi/status/oidv6)
 ![PyPI - License](https://img.shields.io/pypi/l/oidv6)
 

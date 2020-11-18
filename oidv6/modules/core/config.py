@@ -40,7 +40,7 @@ class Language:
 
     @property
     def path_to_locales(self):
-        return os.path.normpath(self._path_to_locales)   # Нормализация пути
+        return os.path.normpath(self._path_to_locales)  # Нормализация пути
 
     @property
     def locales(self):
